@@ -1,4 +1,5 @@
 import Header from "./components/header/Header"
+import MainContent from "./components/maincontent/MainCotent"
 import SideBar from "./components/sidebar/SideBar"
 export default function App() {
   return (
@@ -6,9 +7,7 @@ export default function App() {
       <Header />
       <main className="flex mt-[15px]">
         <SideBar />
-        <div className="grow">
-          Youtube content & category
-        </div>
+        <MainContent />
       </main>
     </div>
   )

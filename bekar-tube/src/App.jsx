@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { Route, Routes } from "react-router-dom"
-import Header from "./components/header/Header"
+import Header from "./components/header/Header.jsx"
 import MainContent from "./components/maincontent/MainCotent"
-import SideBar from "./components/sidebar/SideBar"
-import Video from "./pages/Video"
+import SideBar from "./components/sidebar/SideBar.jsx"
+import Video from "./pages/Video.jsx"
 export default function App() {
 
   const [serchTearm, setSearchTerm] = useState("")

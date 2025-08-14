@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Route, Routes } from "react-router-dom"
-import Header from "./components/header/Header.jsx"
+import Header from "./components/Header/Header.jsx"
 import MainContent from "./components/maincontent/MainCotent"
 import SideBar from "./components/sidebar/SideBar.jsx"
 import Video from "./pages/Video.jsx"

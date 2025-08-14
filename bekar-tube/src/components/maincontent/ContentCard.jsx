@@ -1,31 +1,60 @@
+import PropTypes from "prop-types";
+import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { FaCircleUser } from "react-icons/fa6";
-import thmubnail from "../../assets/youtube.jpg";
 
+const ContentCard = ({ item }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const { thumbnail, channel_icon: Icon, title, channel_name, views, create_date, id } = item;
 
-const ContentCard = () => {
     return (
-        <div className="h-auto w-auto cursor-pointer">
-            <div className="">
-                <img
-                    src={thmubnail}
-                    alt="youtube_thumbnail"
-                    className=" w-full h-full rounded-md bg-cover bg-no-repeat bg-center"
-                />
+        <div onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="h-auto w-auto cursor-pointer">
+
+            <div>
+                {!isHovered ? (
+                    <img
+                        src={thumbnail}
+                        alt="youtube_thumbnail"
+                        className="w-full h-full object-cover"
+                    />
+                ) : (
+                    <iframe
+                        src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=0`}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                    ></iframe>
+                )}
             </div>
+
             <div className=" flex items-start gap-x-2.5 mt-2.5">
                 <div className="w-9 h-9">
-                    <FaCircleUser size={36} />
+                    <Icon size={36} />
                 </div>
                 <div className="grow">
-                    <h3>Don&apos;t WASTE Your Time.. Learn to Code the RIGHT Way!</h3>
-                    <p>Web Developete</p>
-                    <p>1.2M views . <span>2 years ago</span></p>
+                    <h3>{title}</h3>
+                    <p>{channel_name}</p>
+                    <p>{views} . <span>{create_date}</span></p>
                 </div>
                 <BsThreeDotsVertical />
             </div>
-        </div>
+        </div >
     )
 }
 
 export default ContentCard
+
+ContentCard.propTypes = {
+    item: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        channel_icon: PropTypes.elementType,
+        thumbnail: PropTypes.elementType,
+        title: PropTypes.string.isRequired,
+        channel_name: PropTypes.string.isRequired,
+        views: PropTypes.string.isRequired,
+        create_date: PropTypes.string.isRequired
+    })
+}

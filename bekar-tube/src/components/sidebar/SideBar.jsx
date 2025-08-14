@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import SideBarItem from "./SideBarItem";
 const SideBar = () => {
     return (
-        <div className="w-[240px] h-screen flex flex-col gap-[15px] overflow-y-scroll scroll-smooth">
+        <div className="max-w-[240px] w-full h-screen flex flex-col gap-[15px] overflow-y-scroll scroll-smooth">
             <div className="px-3 ">
                 {SidebarMenu.map((item) => (
                     <SideBarItem key={item.id} item={item} />
@@ -61,7 +61,6 @@ const SideBar = () => {
             </div>
             <hr className="text-secondary" />
             <Footer />
-
         </div>
 
     )

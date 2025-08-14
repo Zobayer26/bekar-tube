@@ -7,7 +7,7 @@ import Search from "./Search";
 import UserMenu from "./UserMenu";
 
 
-const Header = () => {
+const Header = ({ setSearchTerm }) => {
     return (
         <header className="px-4 py-2  flex justify-between items-center sticky top-0 left-0">
             <div className=" flex items-center gap-5">
@@ -18,7 +18,7 @@ const Header = () => {
             </div>
 
             <div className="flex items-center gap-2.5">
-                <Search />
+                <Search setSearchTerm={setSearchTerm} />
                 <div className="flex w-10 h-10 items-center bg-[#212121] justify-center 
                 cursor-pointer rounded-full hover:bg-[#3F3F3F]">
                     <FaMicrophone size={24} />

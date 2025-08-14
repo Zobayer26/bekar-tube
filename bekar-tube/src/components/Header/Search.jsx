@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
+const Search = ({ setSearchTerm }) => {
 
-const Search = () => {
-
+    const [text, setText] = useState("")
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSearchTerm(text)
         console.log("click")
     }
 
@@ -15,6 +17,7 @@ const Search = () => {
                     placeholder="Search"
                     className="w-full border border-secondary rounded-l-[40px] outline-none py-2 pl-4 
                     focus:border-blue-500"
+                    onChange={(e) => setText(e.target.value)}
                 />
                 <button type="submit"
                     className="w-16 flex py-2 pl-4 justify-center items-center bg-[#212121] 

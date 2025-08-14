@@ -4,7 +4,7 @@ const Content = [
   {
     id: 1,
     thumbnail: thumbnail_image,
-    title: "Don&apos;t WASTE Your Time.. Learn to Code the RIGHT Way!",
+    title: "Don't WASTE Your Time.. Learn to Code the RIGHT Way!",
     channel_icon: FaCircleUser,
     channel_name: "Web Developete",
     views: "1.2M views",
@@ -13,7 +13,7 @@ const Content = [
   {
     id: 2,
     thumbnail: thumbnail_image,
-    title: "Don&apos;t WASTE Your Time.. Learn to Code the RIGHT Way!",
+    title: "Don't WASTE Your Time.. Learn to Code the RIGHT Way!",
     channel_icon: FaCircleUser,
     channel_name: "Web Developete",
     views: "1.2M views",

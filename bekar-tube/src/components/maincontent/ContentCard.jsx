@@ -1,14 +1,17 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const ContentCard = ({ item }) => {
     const [isHovered, setIsHovered] = useState(false);
     const { thumbnail, channel_icon: Icon, title, channel_name, views, create_date, id } = item;
 
     return (
-        <div onMouseEnter={() => setIsHovered(true)}
+        <Link to={`/video/${id}`}
+            onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+
             className="h-auto w-auto cursor-pointer">
 
             <div>
@@ -19,14 +22,17 @@ const ContentCard = ({ item }) => {
                         className="w-full h-full object-cover"
                     />
                 ) : (
-                    <iframe
-                        src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=0`}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-full"
-                    ></iframe>
+                    <div className=" w-[400px] h-[400px]">
+                        <iframe
+                            src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=0`}
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="w-full h-full"
+                        ></iframe>
+                    </div>
+
                 )}
             </div>
 
@@ -41,7 +47,7 @@ const ContentCard = ({ item }) => {
                 </div>
                 <BsThreeDotsVertical />
             </div>
-        </div >
+        </Link >
     )
 }
 

@@ -24,13 +24,13 @@ const ContentCard = ({ item }) => {
                 ) : (
                     <div className=" w-[400px] h-[400px]">
                         <iframe
-                            src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=0`}
+                            src={`https://www.youtube.com/embed/${id}?autoplay=0&mute=0`}
                             title="YouTube video player"
-                            frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                             className="w-full h-full"
                         ></iframe>
+  
                     </div>
 
                 )}

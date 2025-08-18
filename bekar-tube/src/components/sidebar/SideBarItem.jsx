@@ -2,11 +2,12 @@ import PropTypes from "prop-types"
 export default function SideBarItem({ item: { title, icon: Icon } }) {
 
     return (
-        <div className=" h-10 px-3 flex gap-5 items-center rounded-xl hover:bg-[#3F3F3F] cursor-pointer w-full">
+        <div className={`w-[195px] h-10 flex items-center gap-x-5 px-3 rounded-md hover:bg-[#3F3F3F] cursor-pointer`}>
             <div>
                 <Icon size={24} />
             </div>
-            <h1 className="capitalize font-medium">
+
+            <h1 className="capitalize font-medium text-[16px] whitespace-nowrap tracking-tight ">
                 {title}
             </h1>
         </div>

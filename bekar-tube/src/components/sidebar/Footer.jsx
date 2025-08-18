@@ -2,7 +2,7 @@
 
 export default function Footer() {
     return (
-        <footer className="flex flex-col gap-2.5 items-start px-6 mb-2.5 text-secondary">
+        <footer className="flex flex-col gap-y-2.5 items-start px-3  text-secondary text-[16px]">
             <div className="flex flex-wrap gap-x-1.5">
                 <p>About</p>
                 <p>Press</p>

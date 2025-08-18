@@ -5,21 +5,21 @@ import MainContent from "./components/maincontent/MainCotent"
 import SideBar from "./components/sidebar/SideBar.jsx"
 import Video from "./pages/Video.jsx"
 export default function App() {
-
-  const [serchTearm, setSearchTerm] = useState("")
+  const [showSideBar, setShowSideBar] = useState(false)
+ 
   return (
-    <div className=" bg-dark text-light font-Roboto">
-      <Header setSearchTerm={setSearchTerm} />
+    <section className=" bg-dark text-light font-Roboto">
+      <Header setShow={setShowSideBar} showSideBar={showSideBar} />
       <Routes>
         <Route path="/" element={
-          <main className="flex mt-[15px]">
-            <SideBar />
-            <MainContent serchTearm={serchTearm} />
+          <main className="flex items-start ">
+            <SideBar showSideBar={showSideBar} />
+            <MainContent />
           </main>
         } />
         <Route path="/video/:id" element={<Video />} />
       </Routes>
 
-    </div>
+    </section>
   )
 }

@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 
 const Modal = ({ children, style }) => {
     return (
-        <div className={`bg-[#282828] rounded-md py-2 absolute  ${style} `}>
+        <div className={`bg-[#282828] rounded-md py-2 absolute ${style} `}>
             {children}
         </div>
     )

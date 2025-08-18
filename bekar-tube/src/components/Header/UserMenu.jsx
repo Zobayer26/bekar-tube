@@ -11,10 +11,11 @@ const UserMenu = () => {
             <FaCircleUser size={32} />
             {showModal &&
                 <Modal
-                    style="top-10 right-0 w-[300px] "
+                    style="top-10 right-0 w-[300px]"
                 >
-                    {profileMenuModal.map(({ id, icon: Icon, title }) => (
+                    {profileMenuModal.map(({ id, icon: Icon, title,action }) => (
                         <div key={id}
+                        onClick={action}
                             className=" h-10 px-5 flex gap-5 items-center hover:bg-[#3F3F3F] cursor-pointer w-full" >
                             <div>
                                 <Icon size={24} />

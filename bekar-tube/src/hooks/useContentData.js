@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
+import getCatagory from "../api/getCatagory";
 import getData from "../api/getData";
-const useContentData = (serchTearm) => {
+const useContentData = () => {
+
+  const [categoryList, setCategoryList] = useState([
+    {
+      id: "0",
+      title: "All"
+    }
+  ])
   const [content, setContent] = useState([
     {
-      id: 1,
+      id: "1",
       thumbnail: null,
       title: "Don't WASTE Your Time.. Learn to Code the RIGHT Way!",
       channel_icon: FaCircleUser,
@@ -19,50 +27,79 @@ const useContentData = (serchTearm) => {
   });
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    let ignore = false;
+  const fetchData = async (serchTearm) => {
+    console.log(serchTearm)
+    try {
+      setLoading((prev) => ({
+        ...prev,
+        status: true,
+        message: "Content loading, please wait...",
+      }));
 
-    const fetchData = async () => {
-      try {
-        setLoading((prev) => ({
-          ...prev,
-          status: true,
-          message: "Content loading, please wait...",
+      const data = await getData(serchTearm);
+      if (data) {
+        const mappedData = data.map((item) => ({
+          id: item.id.videoId,
+          thumbnail: item.snippet.thumbnails.high?.url || item.snippet.thumbnails.default.url,
+          title: item.snippet.title,
+          channel_icon: FaCircleUser,
+          channel_name: item.snippet.channelTitle,
+          views: "0",
+          create_date: item.snippet.publishTime,
         }));
 
-        const data = await getData(serchTearm);
-        if (!ignore && data) {
-          const mappedData = data.map((item) => ({
-            id: item.id.videoId,
-            thumbnail: item.snippet.thumbnails.default.url,
-            title: item.snippet.title,
-            channel_icon: FaCircleUser,
-            channel_name: item.snippet.channelTitle,
-            views: "0",
-            create_date: item.snippet.publishTime,
-          }));
-
-          setContent(mappedData);
-        }
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading((prev) => ({
-          ...prev,
-          status: false,
-          message: "",
-        }));
+        setContent(mappedData);
+        console.log("check data", content)
       }
-    };
-
+    } catch (err) {
+      setError(err);
+      console.log(error)
+    } finally {
+      setLoading((prev) => ({
+        ...prev,
+        status: false,
+        message: "",
+      }));
+    }
+  };
+  
+  useEffect(() => {
     fetchData();
+  }, [])
 
-    return () => {
-      ignore = true;
-    };
-  }, [serchTearm]);
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const result = await getCatagory()
 
-  return { content, error, loading };
+        const value = result.map((item) => (
+          {
+            id: item.id,
+            title: item.snippet.title
+          }
+        ))
+        //this will also  update but  a warnnig 
+        // setCategoryList([
+        //   ...categoryList,
+        //   ...value
+        // ])
+
+        //functional updater version is the safer, recommended way ,prevents stale state bugs
+
+        setCategoryList((prev) => [
+          ...prev,
+          ...value
+        ])
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchCategory();
+  }, [])
+
+  return { content, error, loading, categoryList, fetchData };
 };
 
 export default useContentData;

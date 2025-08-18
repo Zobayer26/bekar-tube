@@ -4,13 +4,13 @@ const Recommended = () => {
     const { thumbnail, title, channel_name, views, create_date } = Content[0]
     return (
         <div className="">
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-x-2.5">
                 <p>all</p>
                 <p>baul</p>
                 <p>gopal</p>
                 <p>folk</p>
             </div>
-            <div className="h-auto w-auto cursor-pointer flex items-start gap-2.5">
+            <div className="h-auto w-auto cursor-pointer flex items-start gap-x-2.5">
                 <div className=" min-w-[168px] h-24">
                     <img
                         src={thumbnail}

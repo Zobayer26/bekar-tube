@@ -36,6 +36,29 @@ const SidebarMenu = [
   },
 ];
 
+const shortSidebarMenu = [
+  {
+    id: 1,
+    icon: MdHome,
+    title: "Home",
+  },
+  {
+    id: 2,
+    icon: SiYoutubeshorts,
+    title: "shorts",
+  },
+  {
+    id: 3,
+    icon: MdOutlineSubscriptions,
+    title: "subscriptions",
+  },
+  {
+    id: 4,
+    icon: HiDownload,
+    title: "download",
+  },
+];
+
 const LibraryMenu = [
   {
     id: 1,
@@ -169,7 +192,7 @@ export {
   Explore,
   LibraryMenu,
   MoreOptions,
-  Settings,
-  SidebarMenu,
-  SubscriptionItems,
+  Settings, shortSidebarMenu, SidebarMenu,
+  SubscriptionItems
 };
+

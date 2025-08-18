@@ -1,12 +1,14 @@
+
 import { useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
-const Search = ({ setSearchTerm }) => {
-
+import useContentData from "../../hooks/useContentData";
+const Search = () => {
+const {fetchData} =useContentData()
     const [text, setText] = useState("")
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        setSearchTerm(text)
-        console.log("click")
+        await fetchData(text)
+        console.log("click on search")
     }
 
     return (
@@ -31,3 +33,4 @@ const Search = ({ setSearchTerm }) => {
 }
 
 export default Search
+

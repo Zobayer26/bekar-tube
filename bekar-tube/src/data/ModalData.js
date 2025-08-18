@@ -4,6 +4,8 @@ import { GoVideo } from "react-icons/go";
 import { IoCreateOutline } from "react-icons/io5";
 import { MdOutlineSwitchAccount } from "react-icons/md";
 import { PiSignIn } from "react-icons/pi";
+import { logInWithGoogle, logout } from "../auth/firebase";
+
 const createMenuModal = [
   {
     id: 1,
@@ -24,7 +26,7 @@ const createMenuModal = [
 
 const profileMenuModal = [
   {
-    id: 1,
+    id: 4,
     icon: FaGoogle,
     title: "google account",
   },
@@ -32,12 +34,15 @@ const profileMenuModal = [
     id: 2,
     icon: MdOutlineSwitchAccount,
     title: "switch account",
+    action:logInWithGoogle
   },
   {
     id: 3,
     icon: PiSignIn,
     title: "sign out",
+    action: logout
   },
 ];
 
 export { createMenuModal, profileMenuModal };
+

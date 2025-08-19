@@ -20,7 +20,7 @@ const UserMenu = () => {
                             <div>
                                 <Icon size={24} />
                             </div>
-                            <h1 className="capitalize font-medium">
+                            <h1 className="capitalize font-normal text-sm">
                                 {title}
                             </h1>
                         </div>

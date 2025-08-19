@@ -1,12 +1,18 @@
+import PropTypes from "prop-types";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { Explore, LibraryMenu, MoreOptions, Settings, SidebarMenu, SubscriptionItems, shortSidebarMenu } from "../../data/SidebarMenuData";
+import { useAuth } from "../../context";
+import {
+    Explore, LibraryMenu, MoreOptions, Settings, SidebarMenu,
+    SubscriptionItems, shortSidebarMenu
+} from "../../data/SidebarMenuData";
+import useSubscribeList from "../../hooks/useSubscribeList";
 import Footer from "./Footer";
 import SideBarItem from "./SideBarItem";
-
-import PropTypes from "prop-types";
 const SideBar = ({ showSideBar }) => {
-
+    const { user } = useAuth()
+    const { subscribe } =useSubscribeList(user)
+    console.log(subscribe)
     return (
         <aside className="h-[calc(100vh-100px)] sticky top-14.5 left-0">
             {
@@ -36,19 +42,23 @@ const SideBar = ({ showSideBar }) => {
                         </div>
 
                         <hr className="text-secondary" />
+                        {
+                            user ?
 
-                        <div>
-                            <h1 className="capitalize font-medium px-3">
-                                Subscriptions
-                            </h1>
-                            {SubscriptionItems.map((item) => (
-                                <SideBarItem key={item.id} item={item} />
-                            ))}
-                            <SideBarItem
-                                item={{ title: "show more", icon: IoIosArrowDown }}
-                            />
-                        </div>
+                                <div>
+                                    <h1 className="capitalize font-medium px-3">
+                                        Subscriptions
+                                    </h1>
 
+                                    {SubscriptionItems.map((item) => (
+                                        <SideBarItem key={item.id} item={item} />
+                                    ))}
+                                    <SideBarItem
+                                        item={{ title: "show more", icon: IoIosArrowDown }}
+                                    />
+                                </div>
+                                : ""
+                        }
                         <hr className="text-secondary" />
 
                         <div>
@@ -86,7 +96,7 @@ const SideBar = ({ showSideBar }) => {
                     </div >
                 ) : (
                     <div className="px-1">
-                            {shortSidebarMenu .map(({ id, icon: Icon, title }) => (
+                        {shortSidebarMenu.map(({ id, icon: Icon, title }) => (
                             <div key={id}
                                 className={`flex w-16 pt-4 pb-3.5 flex-col justify-center items-center  py-1 rounded-md hover:bg-[#3F3F3F] cursor-pointer`}>
                                 <div>

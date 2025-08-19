@@ -12,11 +12,11 @@ export default async function getSubscriberList() {
         if(!res.ok){
             throw new Error(`something went wrong ! status:${res.status}`)
         }
-        const data = await res.json();
-         return data
+        const {items} = await res.json();
+         return items
 
     } catch (error) {
         console.log(error)
-        return null
+        return []
     }
 }

@@ -12,7 +12,7 @@ const CreateMenu = () => {
             <p className=" font-Roboto font-medium">Create</p>
             {showModal &&
                 <Modal
-                    style="top-10 left-0 w-[190px] "
+                    style="top-10 left-0 w-[200px] "
                 >
                     {
                         createMenuModal.map(({ id, icon: Icon, title }) => (
@@ -21,7 +21,7 @@ const CreateMenu = () => {
                                 <div>
                                     <Icon size={24} />
                                 </div>
-                                <h1 className="capitalize font-medium">
+                                <h1 className="capitalize font-medium text-sm whitespace-nowrap">
                                     {title}
                                 </h1>
                             </div>

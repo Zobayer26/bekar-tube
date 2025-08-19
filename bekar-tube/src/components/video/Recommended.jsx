@@ -20,7 +20,7 @@ const Recommended = () => {
                 </div>
 
                 <div className="">
-                    <h3 className="h-10 overflow-hidden text-xs">{title}</h3>
+                    <h3 className="h-auto overflow-hidden text-xs">{title}</h3>
                     <p>{channel_name}</p>
                     <p>{views} . <span>{create_date}</span></p>
                 </div>

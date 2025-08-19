@@ -26,8 +26,6 @@ const logInWithGoogle = async () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const user = result.user;
-
-        console.log("✅ Logged in:", user);
         return { user, token };
     } catch (error) {
         console.error("❌ Login error:", error);
@@ -46,5 +44,5 @@ const logout = async () => {
     }
 };
 
-export { logInWithGoogle, logout };
+export { auth, logInWithGoogle, logout };
 

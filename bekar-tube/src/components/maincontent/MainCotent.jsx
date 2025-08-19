@@ -5,9 +5,9 @@ import Category from "./Category";
 import ContentCard from "./ContentCard";
 
 const MainContent = () => {
-
+   
     const { content, categoryList, fetchData, loading } = useContentData()
-
+    
     return (
         <section className="px-5 flex flex-col gap-y-5 ">
 
@@ -39,7 +39,7 @@ const MainContent = () => {
                         {
                             content.map((item, index) => (
                                 <div className="h-auto"
-                                key={index} >
+                                    key={index} >
                                     <ContentCard item={item} />
                                 </div>
 
